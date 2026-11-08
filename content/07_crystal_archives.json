@@ -1,0 +1,128 @@
+{
+ "id": "crystal_archives",
+ "name": "The Crystal Archives",
+ "realm": "Store many values in a row of crystals.",
+ "lesson": "An ARRAY holds many values of one type:  int runes[3] = {5, 8, 2};\n  Indexes start at ZERO:  runes[0] == 5,  runes[2] == 2.\n  std::vector is a magical array that can GROW:  (#include <vector>)\n    std::vector<int> v = {1, 2};   v.push_back(3);   v.size() == 3\n  Range-for loops visit each element:  for (int r : v) { ... }",
+ "lessonCode": "std::vector<std::string> spells = {\"Fire\", \"Ice\"};\nspells.push_back(\"Lightning\");\nfor (const auto& s : spells) {\n    std::cout << s << \"\\n\";\n}\nstd::cout << spells.size(); // 3",
+ "trial": [
+  {
+   "type": "type",
+   "prompt": "What's the index of the FIRST element of an array?",
+   "code": "",
+   "options": [],
+   "answers": [
+    "0",
+    "zero"
+   ],
+   "hint": "Programmers start counting early.",
+   "explain": "Arrays are zero-indexed."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "int a[4] = {10, 20, 30, 40};\ncout << a[2];",
+   "options": [],
+   "answers": [
+    "30"
+   ],
+   "hint": "Index 0 is 10...",
+   "explain": "a[0]=10, a[1]=20, a[2]=30."
+  },
+  {
+   "type": "choice",
+   "prompt": "How do you add an element to the end of a vector v?",
+   "code": "",
+   "options": [
+    "a) v.add(5)",
+    "b) v.push_back(5)",
+    "c) v[v.size()] = 5",
+    "d) v += 5"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Push it to the back.",
+   "explain": "push_back appends to the end."
+  }
+ ],
+ "pool": [
+  {
+   "type": "choice",
+   "prompt": "v.size() of vector<int> v{4,5,6}?",
+   "code": "",
+   "options": [
+    "a) 2",
+    "b) 3",
+    "c) 4",
+    "d) 6"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Count the elements.",
+   "explain": "Three elements."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "vector<int> v{10, 20, 30};\ncout << v[1];",
+   "options": [],
+   "answers": [
+    "20"
+   ],
+   "hint": "Index starts at 0.",
+   "explain": "v[1] is the second element."
+  }
+ ],
+ "bossName": "The Crystal Hydra",
+ "bossArt": "     /\\    /\\    /\\\n    /oo\\  /oo\\  /oo\\\n    \\  /  \\  /  \\  /\n     ||    ||    ||\n      \\\\   ||   //\n       \\\\  ||  //\n        \\\\_||_//\n        /      \\\n       /________\\",
+ "boss": [
+  {
+   "type": "choice",
+   "prompt": "The Hydra's array has 5 heads. What's wrong?",
+   "code": "int heads[5];\nheads[5] = 1;",
+   "options": [
+    "a) Nothing",
+    "b) Out of bounds - valid indexes are 0..4",
+    "c) Must use vector",
+    "d) Arrays can't hold 1"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "5 elements: indexes 0 to ?",
+   "explain": "heads[5] is one past the end: undefined behaviour!"
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "vector<int> v = {3, 1, 4};\nv.push_back(1);\nv.push_back(5);\ncout << v.size() << v[3];",
+   "options": [],
+   "answers": [
+    "51"
+   ],
+   "hint": "Count them, then find index 3.",
+   "explain": "v = {3,1,4,1,5}: size 5, v[3] = 1 -> prints 51."
+  },
+  {
+   "type": "type",
+   "prompt": "What is total?",
+   "code": "vector<int> v = {2, 4, 6};\nint total = 0;\nfor (int x : v) total += x * x;",
+   "options": [],
+   "answers": [
+    "56"
+   ],
+   "hint": "Square each, then add.",
+   "explain": "4 + 16 + 36 = 56."
+  }
+ ],
+ "prize": "Prismatic Crystal Orb",
+ "spell": {
+  "prompt": "Write int largest(const vector<int>& v) that returns the biggest element (the vector is never empty).",
+  "prelude": "#include <iostream>\n#include <vector>\nusing namespace std;\n",
+  "epilogue": "int main() {\n    vector<int> a{3, 9, 2}, b{-5, -1, -8};\n    cout << largest(a) << endl << largest(b) << endl;\n    return 0;\n}\n",
+  "expected": "9\n-1",
+  "hint": "Start best = v[0], then loop over the rest. (Don't start at 0 - negatives!)",
+  "explain": "Range-for makes this short."
+ }
+}

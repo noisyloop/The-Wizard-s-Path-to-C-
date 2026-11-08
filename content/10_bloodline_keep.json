@@ -1,0 +1,127 @@
+{
+ "id": "bloodline_keep",
+ "name": "The Bloodline Keep",
+ "realm": "Portraits of ancestors watch you. Their powers are yours to inherit.",
+ "lesson": "Inheritance lets a class build on another: class Dog : public Animal. Mark a base function virtual and derived classes can override it; calling through a base pointer or reference then runs the DERIVED version (polymorphism). Add override so the compiler checks you, and give polymorphic bases a virtual destructor.",
+ "lessonCode": "struct Animal {\n    virtual string speak() const { return \"...\"; }\n    virtual ~Animal() {}\n};\nstruct Dog : Animal {\n    string speak() const override { return \"Woof\"; }\n};\nDog d; const Animal& a = d;\ncout << a.speak();   // Woof",
+ "trial": [
+  {
+   "type": "choice",
+   "prompt": "Which syntax makes Dog inherit publicly from Animal?",
+   "code": "",
+   "options": [
+    "a) class Dog : public Animal",
+    "b) class Dog extends Animal",
+    "c) class Dog -> Animal",
+    "d) class Dog inherits Animal"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "A colon.",
+   "explain": "class Derived : public Base."
+  },
+  {
+   "type": "type",
+   "prompt": "Which keyword lets derived classes override a function at runtime?",
+   "code": "",
+   "options": [],
+   "answers": [
+    "virtual"
+   ],
+   "hint": "Think virtual dispatch.",
+   "explain": "virtual enables dynamic dispatch."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "struct A { virtual string name() { return \"A\"; } };\nstruct B : A { string name() override { return \"B\"; } };\nB b; A* p = &b;\ncout << p->name();",
+   "options": [],
+   "answers": [
+    "B"
+   ],
+   "hint": "The real object is a B.",
+   "explain": "Virtual call picks the derived override."
+  },
+  {
+   "type": "choice",
+   "prompt": "What does override do?",
+   "code": "",
+   "options": [
+    "a) asks the compiler to check you really override a virtual",
+    "b) makes the call faster",
+    "c) hides the base function",
+    "d) forbids further overriding"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "A safety net.",
+   "explain": "A typo'd signature becomes a compile error."
+  },
+  {
+   "type": "type",
+   "prompt": "Now A::name is NOT virtual. What prints?",
+   "code": "struct A { string name() { return \"A\"; } };\nstruct B : A { string name() { return \"B\"; } };\nB b; A* p = &b;\ncout << p->name();",
+   "options": [],
+   "answers": [
+    "A"
+   ],
+   "hint": "No virtual, no dispatch.",
+   "explain": "Without virtual the static type decides."
+  }
+ ],
+ "pool": [],
+ "bossName": "Baron Von Virtual",
+ "bossArt": "         .-\"\"\"-.\n        / .===. \\\n        \\/ 6 6 \\/\n        ( \\___/ )\n     ___ooo__V__ooo___",
+ "boss": [
+  {
+   "type": "choice",
+   "prompt": "Why give a polymorphic base class a virtual destructor?",
+   "code": "",
+   "options": [
+    "a) deleting via a base pointer then destroys the derived part too",
+    "b) it is faster",
+    "c) the compiler requires it",
+    "d) it stops copying"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Think delete base*.",
+   "explain": "Otherwise only the base destructor runs - undefined behavior."
+  },
+  {
+   "type": "type",
+   "prompt": "A class with a pure virtual function (= 0) is called…? (one word)",
+   "code": "",
+   "options": [],
+   "answers": [
+    "abstract",
+    "abstract class"
+   ],
+   "hint": "You can't instantiate it.",
+   "explain": "Abstract classes are interfaces."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "struct Shape { virtual int sides() const { return 0; } };\nstruct Tri : Shape { int sides() const override { return 3; } };\nTri t; const Shape& s = t;\ncout << s.sides();",
+   "options": [],
+   "answers": [
+    "3"
+   ],
+   "hint": "Reference to a Tri.",
+   "explain": "The override runs through the reference."
+  }
+ ],
+ "prize": "Signet Ring of Inheritance",
+ "spell": {
+  "prompt": "Write class Dog that publicly derives from Animal and overrides speak() to return \"Woof\".",
+  "prelude": "#include <iostream>\n#include <string>\nusing namespace std;\nstruct Animal {\n    virtual string speak() const { return \"...\"; }\n    virtual ~Animal() {}\n};\n",
+  "epilogue": "int main() {\n    Dog d;\n    const Animal& a = d;\n    cout << a.speak() << endl;\n    return 0;\n}\n",
+  "expected": "Woof",
+  "hint": "class Dog : public Animal { public: string speak() const override { return \"Woof\"; } };",
+  "explain": "Override + base reference = polymorphism."
+ }
+}

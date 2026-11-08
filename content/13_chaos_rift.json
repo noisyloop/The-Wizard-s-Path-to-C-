@@ -1,0 +1,131 @@
+{
+ "id": "chaos_rift",
+ "name": "The Chaos Rift",
+ "realm": "Reality tears. Things go wrong here - on purpose.",
+ "lesson": "When something goes wrong, throw an exception. Risky code goes inside try; handlers are catch blocks (catch by const reference). If nothing catches it, the program terminates. <stdexcept> offers runtime_error, out_of_range and friends; catch(...) catches anything.",
+ "lessonCode": "try {\n    throw runtime_error(\"boom\");\n} catch (const exception& e) {\n    cout << e.what();   // boom\n}",
+ "trial": [
+  {
+   "type": "type",
+   "prompt": "Which keyword raises an error?",
+   "code": "",
+   "options": [],
+   "answers": [
+    "throw"
+   ],
+   "hint": "Toss it!",
+   "explain": "throw raises an exception."
+  },
+  {
+   "type": "type",
+   "prompt": "Which keyword begins the protected block?",
+   "code": "",
+   "options": [],
+   "answers": [
+    "try"
+   ],
+   "hint": "Give it a ___.",
+   "explain": "try { ... } catch ..."
+  },
+  {
+   "type": "choice",
+   "prompt": "Exceptions should usually be caught by…",
+   "code": "",
+   "options": [
+    "a) const reference",
+    "b) value always",
+    "c) raw pointer",
+    "d) void"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Avoid slicing.",
+   "explain": "catch (const std::exception& e)."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "try { throw 42; }\ncatch (int x) { cout << x + 1; }",
+   "options": [],
+   "answers": [
+    "43"
+   ],
+   "hint": "42 plus one.",
+   "explain": "The int handler catches it."
+  },
+  {
+   "type": "choice",
+   "prompt": "Which header declares std::runtime_error?",
+   "code": "",
+   "options": [
+    "a) <stdexcept>",
+    "b) <error>",
+    "c) <exception_all>",
+    "d) <except>"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "std + exception.",
+   "explain": "<stdexcept>."
+  }
+ ],
+ "pool": [],
+ "bossName": "Throwdown the Exception Imp",
+ "bossArt": "      \\ | /\n     -- ! --   !!!\n      /_^_\\\n     ( >.< )\n      /|_|\\",
+ "boss": [
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "try {\n    cout << \"A\";\n    throw 1;\n    cout << \"B\";\n} catch (...) { cout << \"C\"; }",
+   "options": [],
+   "answers": [
+    "AC"
+   ],
+   "hint": "B never runs.",
+   "explain": "The throw skips the rest of try."
+  },
+  {
+   "type": "choice",
+   "prompt": "What does catch(...) do?",
+   "code": "",
+   "options": [
+    "a) catches any exception",
+    "b) catches nothing",
+    "c) rethrows",
+    "d) catches only ints"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Ellipsis = anything.",
+   "explain": "It's the catch-all."
+  },
+  {
+   "type": "choice",
+   "prompt": "What happens to an uncaught exception?",
+   "code": "",
+   "options": [
+    "a) std::terminate ends the program",
+    "b) it is ignored",
+    "c) returns 0",
+    "d) becomes a warning"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Not pretty.",
+   "explain": "The runtime calls std::terminate."
+  }
+ ],
+ "prize": "Cloak of Catch Blocks",
+ "spell": {
+  "prompt": "Write int safeDivide(int a, int b) that throws runtime_error(\"div by zero\") when b is 0, otherwise returns a / b.",
+  "prelude": "#include <iostream>\n#include <stdexcept>\nusing namespace std;\n",
+  "epilogue": "int main() {\n    try {\n        cout << safeDivide(10, 2) << endl;\n        cout << safeDivide(1, 0) << endl;\n    } catch (const runtime_error&) {\n        cout << \"caught\" << endl;\n    }\n    return 0;\n}\n",
+  "expected": "5\ncaught",
+  "hint": "if (b == 0) throw runtime_error(\"div by zero\");",
+  "explain": "Errors become control flow."
+ }
+}

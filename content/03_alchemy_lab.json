@@ -1,0 +1,132 @@
+{
+ "id": "alchemy_lab",
+ "name": "The Alchemy Lab",
+ "realm": "Mix numbers, transmute values.",
+ "lesson": "Operators combine values:  +  -  *  /  and  %  (remainder / modulo).\n  WARNING: int / int is INTEGER division. 7 / 2 == 3, not 3.5!\n  7 % 2 == 1 (the leftover).  Use 7.0 / 2 to get 3.5.\n  x += 5 means x = x + 5.   x++ adds 1 to x.\n  Comparisons give bool:  ==  !=  <  >  <=  >=",
+ "lessonCode": "int potions = 10;\npotions += 5;      // 15\npotions++;         // 16\nint left = 17 % 5; // 2\ndouble avg = 7.0 / 2; // 3.5",
+ "trial": [
+  {
+   "type": "choice",
+   "prompt": "What is 17 / 5 in C++ (both ints)?",
+   "code": "",
+   "options": [
+    "a) 3.4",
+    "b) 3",
+    "c) 4",
+    "d) 2"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Integer division drops the decimal.",
+   "explain": "int / int truncates: 17/5 == 3."
+  },
+  {
+   "type": "type",
+   "prompt": "What is 17 % 5 ?",
+   "code": "",
+   "options": [],
+   "answers": [
+    "2"
+   ],
+   "hint": "What's left over after 5 goes into 17?",
+   "explain": "17 = 5*3 + 2, so 17 % 5 == 2."
+  },
+  {
+   "type": "choice",
+   "prompt": "Which operator checks EQUALITY?",
+   "code": "",
+   "options": [
+    "a) =",
+    "b) ==",
+    "c) ===",
+    "d) :="
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "One = assigns. Two compares.",
+   "explain": "== compares; = assigns. (=== is JavaScript!)"
+  }
+ ],
+ "pool": [
+  {
+   "type": "choice",
+   "prompt": "What is 7 % 3 ?",
+   "code": "",
+   "options": [
+    "a) 2",
+    "b) 1",
+    "c) 0",
+    "d) 3"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Remainder of 7 divided by 3.",
+   "explain": "7 = 2*3 + 1, so the remainder is 1."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "int x = 5;\nx += 3;\ncout << x;",
+   "options": [],
+   "answers": [
+    "8"
+   ],
+   "hint": "+= adds then stores.",
+   "explain": "x += 3 means x = x + 3."
+  }
+ ],
+ "bossName": "Sir Cumference the Square Golem",
+ "bossArt": "     ___________\n    |  _     _  |\n    | |O|   |O| |\n    |     ^     |\n    |  \\_____/  |\n    |___________|\n   /|           |\\\n  /_|   10 x 10 |_\\\n    |___________|\n     |_|     |_|",
+ "boss": [
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "int a = 5;\na *= 2;\na -= 3;\nstd::cout << a;",
+   "options": [],
+   "answers": [
+    "7"
+   ],
+   "hint": "5 -> times 2 -> minus 3.",
+   "explain": "5*2 = 10, 10-3 = 7."
+  },
+  {
+   "type": "choice",
+   "prompt": "Which gives 2.5?",
+   "code": "",
+   "options": [
+    "a) 5 / 2",
+    "b) 5 % 2",
+    "c) 5.0 / 2",
+    "d) (int)5.0 / 2"
+   ],
+   "answers": [
+    "c"
+   ],
+   "hint": "At least one side must be a double.",
+   "explain": "5.0 / 2 is floating-point division = 2.5."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "int x = 3;\nint y = x++ + 10;\nstd::cout << y << \" \" << x;",
+   "options": [],
+   "answers": [
+    "13 4"
+   ],
+   "hint": "Post-increment: use first, then add.",
+   "explain": "x++ yields 3 THEN makes x 4, so y = 13 and x = 4."
+  }
+ ],
+ "prize": "Bubbling Philosopher's Flask",
+ "spell": {
+  "prompt": "The variables a and b are already declared for you (a=17, b=5). Print a / b on one line, then a % b on the next.",
+  "prelude": "#include <iostream>\nusing namespace std;\nint main() {\n    int a = 17, b = 5;\n",
+  "epilogue": "    return 0;\n}\n",
+  "expected": "3\n2",
+  "hint": "Integer division drops the fraction; % gives the remainder.",
+  "explain": "17/5 = 3 remainder 2."
+ }
+}

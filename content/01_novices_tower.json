@@ -1,0 +1,139 @@
+{
+ "id": "novices_tower",
+ "name": "The Novice's Tower",
+ "realm": "Where every wizard speaks their first words.",
+ "lesson": "Every C++ spell lives inside a function called main(). The program starts there.\n  To make the computer SPEAK, we use std::cout with the << operator.\n  #include <iostream> summons the input/output library.\n  Every statement ends with a semicolon ;  -- forget it and the spell fizzles.",
+ "lessonCode": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, Wizard!\" << std::endl;\n    return 0;\n}",
+ "trial": [
+  {
+   "type": "choice",
+   "prompt": "Where does every C++ program begin running?",
+   "code": "",
+   "options": [
+    "a) start()",
+    "b) main()",
+    "c) begin()",
+    "d) the first line of the file"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "It's the 'main' event.",
+   "explain": "Execution always begins in main()."
+  },
+  {
+   "type": "choice",
+   "prompt": "Which line summons the library that provides std::cout?",
+   "code": "",
+   "options": [
+    "a) #include <iostream>",
+    "b) #include <math>",
+    "c) import cout;",
+    "d) using cout;"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Input + output stream.",
+   "explain": "<iostream> = input/output stream library."
+  },
+  {
+   "type": "type",
+   "prompt": "What character ends almost every C++ statement?",
+   "code": "",
+   "options": [],
+   "answers": [
+    ";",
+    "semicolon"
+   ],
+   "hint": "It looks like a winking comma.",
+   "explain": "The semicolon ; ends a statement."
+  }
+ ],
+ "pool": [
+  {
+   "type": "choice",
+   "prompt": "Which symbol starts a single-line comment?",
+   "code": "",
+   "options": [
+    "a) //",
+    "b) ##",
+    "c) /*",
+    "d) --"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Two slashes.",
+   "explain": "// comments out the rest of the line."
+  },
+  {
+   "type": "type",
+   "prompt": "What does endl do besides ending the line? (one word)",
+   "code": "",
+   "options": [],
+   "answers": [
+    "flush",
+    "flushes"
+   ],
+   "hint": "It empties the output buffer.",
+   "explain": "std::endl writes a newline AND flushes the stream."
+  }
+ ],
+ "bossName": "Gribble the Typo Goblin",
+ "bossArt": "      ,      ,\n     /(.-\"\"-.)\\\n |\\  \\/      \\/  /|\n | \\ / =.  .= \\ / |\n \\( \\   o\\/o   / )/\n  \\_, '-/  \\-' ,_/\n    /   \\__/   \\\n    \\ \\__/\\__/ /\n  ___\\ \\|--|/ /___\n /`    \\      /    `\\",
+ "boss": [
+  {
+   "type": "type",
+   "prompt": "Gribble scrambled your spell! Type the ONE word missing:\n    std::____ << \"Fireball!\";",
+   "code": "",
+   "options": [],
+   "answers": [
+    "cout"
+   ],
+   "hint": "Character OUTput.",
+   "explain": "std::cout prints to the console."
+  },
+  {
+   "type": "choice",
+   "prompt": "What does this print?",
+   "code": "std::cout << \"A\" << \"B\" << std::endl;",
+   "options": [
+    "a) A B",
+    "b) AB",
+    "c) A\\nB",
+    "d) Error"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "<< glues things together with no spaces.",
+   "explain": "Nothing adds a space, so it prints AB."
+  },
+  {
+   "type": "choice",
+   "prompt": "Gribble deleted something. Why won't this compile?",
+   "code": "int main() {\n    std::cout << \"Hi\"\n}",
+   "options": [
+    "a) Missing return",
+    "b) Missing semicolon",
+    "c) Wrong quotes",
+    "d) main must be void"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Look at the end of the cout line.",
+   "explain": "The statement needs a ; after \"Hi\". (return 0 is optional in main.)"
+  }
+ ],
+ "prize": "Wooden Apprentice Wand",
+ "spell": {
+  "prompt": "Write a complete program that prints Hello, Wizard! (then a newline).",
+  "prelude": "",
+  "epilogue": "",
+  "expected": "Hello, Wizard!",
+  "hint": "You need #include <iostream>, int main(), and std::cout << ... << std::endl;",
+  "explain": "Every spell begins with main()."
+ }
+}

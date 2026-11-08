@@ -10,22 +10,19 @@ A gamified terminal adventure that teaches C++ from your very first `cout` to po
 
 ## Play it
 
-**Windows (.exe)** — install [MinGW-w64](https://www.mingw-w64.org/) (or MSYS2), then:
-```
-g++ -std=c++17 -O2 -static spellbound.cpp -o Spellbound.exe
-```
-Or with Visual Studio's Developer Prompt:
-```
-cl /std:c++17 /EHsc /O2 spellbound.cpp /Fe:Spellbound.exe
-```
-Double-click `Spellbound.exe`. Best in **Windows Terminal** (colors work in Windows 10+).
+Needs a C++17 compiler (for building, and for the **Spell Casting** challenges at runtime). Keep the `content/` folder next to the executable.
 
-**Linux / macOS**
+**Any platform (g++/clang):**
 ```
-g++ -std=c++17 -O2 spellbound.cpp -o spellbound && ./spellbound
+g++ -std=c++17 -O2 -Isrc src/main.cpp src/*/*.cpp -o Wizards && ./Wizards
 ```
+**Windows (MinGW-w64):**
+```
+g++ -std=c++17 -O2 -static -Isrc src/main.cpp src/*/*.cpp -o Wizards.exe
+```
+**CMake:** `cmake -B build && cmake --build build` (copies `content/` and `packs/` beside the binary).
 
-Progress saves automatically to `spellbound_save.txt` next to the game.
+Progress saves to `wizards_save.txt`. Best in Windows Terminal.
 
 ## How it plays
 
@@ -33,13 +30,15 @@ Progress saves automatically to `spellbound_save.txt` next to the game.
 |---|---|
 | **Lessons** | Each realm opens with a short lesson and an example code scroll |
 | **Trials** | 3 questions — multiple choice, type-the-answer, and "what does this print?" |
-| **Bosses** | Harder questions, double XP. Win to earn a wizard prize and unlock the next realm |
+| **Bosses** | Harder questions, double XP, then a real coding spell. Win a wizard prize and unlock the next realm |
+| **Spell Casting** | Write real C++; the game compiles it and checks the output. Compiler errors become wizard hints |
+| **Practice / Daily / Achievements** | Risk-free replays, one new spell a day with a streak, and unlockable achievements |
 | **Mana** | 3 per fight. Wrong answer = −1. Hit 0 and you retreat to try again |
 | **Streaks** | 3+ correct in a row = bonus XP |
 | **Ranks** | Hedge Apprentice → Rune Scribe → Adept Conjurer → Sorcerer → Warlock of Loops → High Enchanter → **Archmage of C++** |
 | **Midnight Bazaar** | Spend gold on Hint Scrolls, Mana Potions, and familiars like the owl *Semicolon* and the phoenix *Segfault* |
 
-## The Realms (v0.1)
+## The Realms (15)
 
 | # | Realm | Concept | Boss | Prize |
 |---|---|---|---|---|

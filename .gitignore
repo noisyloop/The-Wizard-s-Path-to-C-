@@ -1,5 +1,5 @@
-spellbound
-Spellbound.exe
-*.exe
+build/
+Wizards
+Wizards.exe
 *.o
-spellbound_save.txt
+wizards_save.txt

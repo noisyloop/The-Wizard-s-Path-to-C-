@@ -1,0 +1,139 @@
+{
+ "id": "forking_path",
+ "name": "The Forking Path",
+ "realm": "Every choice opens a new road.",
+ "lesson": "if / else lets your spell DECIDE:\n    if (mana >= 10) { cast(); } else { rest(); }\n  Combine conditions:  &&  (AND)   ||  (OR)   !  (NOT)\n  switch picks among many exact values - don't forget 'break;'!",
+ "lessonCode": "if (mana >= 50 && level > 3) {\n    std::cout << \"Meteor Storm!\";\n} else if (mana >= 10) {\n    std::cout << \"Spark.\";\n} else {\n    std::cout << \"Too tired...\";\n}",
+ "trial": [
+  {
+   "type": "choice",
+   "prompt": "What prints when mana = 20, level = 5?",
+   "code": "if (mana >= 50 && level > 3) cout << \"Meteor\";\nelse if (mana >= 10) cout << \"Spark\";\nelse cout << \"Tired\";",
+   "options": [
+    "a) Meteor",
+    "b) Spark",
+    "c) Tired",
+    "d) MeteorSpark"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "&& needs BOTH to be true.",
+   "explain": "mana >= 50 is false, so the first branch fails; mana >= 10 is true -> Spark."
+  },
+  {
+   "type": "type",
+   "prompt": "Which operator means OR? (type it)",
+   "code": "",
+   "options": [],
+   "answers": [
+    "||",
+    "or"
+   ],
+   "hint": "Two vertical bars.",
+   "explain": "|| is logical OR (the keyword 'or' also works!)."
+  },
+  {
+   "type": "choice",
+   "prompt": "What is !true ?",
+   "code": "",
+   "options": [
+    "a) true",
+    "b) false",
+    "c) 0.5",
+    "d) Error"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "! flips it.",
+   "explain": "! negates: !true == false."
+  }
+ ],
+ "pool": [
+  {
+   "type": "choice",
+   "prompt": "Which prints only when BOTH are true?",
+   "code": "",
+   "options": [
+    "a) a && b",
+    "b) a || b",
+    "c) !a",
+    "d) a = b"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "AND.",
+   "explain": "&& needs both sides true."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "int n = 4;\nif (n % 2 == 0) cout << \"even\";\nelse cout << \"odd\";",
+   "options": [],
+   "answers": [
+    "even"
+   ],
+   "hint": "4 divided by 2 leaves nothing.",
+   "explain": "Remainder 0 means even."
+  }
+ ],
+ "bossName": "The Two-Headed Riddle Wyrm",
+ "bossArt": "        __    __\n       /oo\\  /oo\\\n       \\  /  \\  /\n        )(    )(\n       (  \\__/  )\n        \\      /\n    ~~~~~\\    /~~~~~\n          \\__/",
+ "boss": [
+  {
+   "type": "choice",
+   "prompt": "The Wyrm forgot a break. What prints for spell = 1?",
+   "code": "switch (spell) {\n  case 1: cout << \"Fire \";\n  case 2: cout << \"Ice \";\n          break;\n  case 3: cout << \"Bolt \";\n}",
+   "options": [
+    "a) Fire",
+    "b) Fire Ice",
+    "c) Fire Ice Bolt",
+    "d) Ice"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Without break, execution FALLS THROUGH.",
+   "explain": "case 1 falls through into case 2, then hits break: 'Fire Ice'."
+  },
+  {
+   "type": "choice",
+   "prompt": "Left head: What prints?",
+   "code": "int hp = 0;\nif (hp = 5) cout << \"Alive\";\nelse cout << \"Dead\";",
+   "options": [
+    "a) Dead",
+    "b) Alive",
+    "c) Compile error",
+    "d) Nothing"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Look VERY carefully at the = sign.",
+   "explain": "hp = 5 ASSIGNS 5 (non-zero = true), so Alive prints. Classic bug!"
+  },
+  {
+   "type": "type",
+   "prompt": "Right head: What does this evaluate to? (true/false)",
+   "code": "(3 > 2) && !(5 == 5) || (1 < 2)",
+   "options": [],
+   "answers": [
+    "true",
+    "1"
+   ],
+   "hint": "&& binds tighter than ||.",
+   "explain": "(true && false) || true  ->  false || true  ->  true."
+  }
+ ],
+ "prize": "Twin-Path Compass",
+ "spell": {
+  "prompt": "power is already declared (7). Print strong if power is at least 5, otherwise print weak.",
+  "prelude": "#include <iostream>\nusing namespace std;\nint main() {\n    int power = 7;\n",
+  "epilogue": "    return 0;\n}\n",
+  "expected": "strong",
+  "hint": "if (power >= 5) ... else ...",
+  "explain": ">= means greater than or equal."
+ }
+}

@@ -1,0 +1,5 @@
+spellbound
+Spellbound.exe
+*.exe
+*.o
+spellbound_save.txt

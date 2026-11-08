@@ -10,7 +10,7 @@ A gamified terminal adventure that teaches C++ from your very first `cout` to po
 
 ## Play it
 
-**Windows (.exe)** — easiest: grab `Spellbound.exe` from the repo's **Actions** tab (latest run → Artifacts) or **Releases**. To build it yourself, install [MinGW-w64](https://www.mingw-w64.org/) (or MSYS2), then:
+**Windows (.exe)** — install [MinGW-w64](https://www.mingw-w64.org/) (or MSYS2), then:
 ```
 g++ -std=c++17 -O2 -static spellbound.cpp -o Spellbound.exe
 ```
@@ -65,7 +65,7 @@ Single-file, playable start to finish. 8 realms, 48 questions, XP/ranks/gold, sh
 - Randomize question order and pull from a bigger pool so replays differ
 - "Practice Mode" — replay cleared realms for gold without risk
 - Typewriter text effect + sound beeps on correct/wrong
-- CMake build + GitHub Actions that publishes `Spellbound.exe` on every release
+- CMake build
 
 ### Phase 2 — Write real spells (v0.3) ⭐ *the big one*
 - **Spell Casting challenges**: the player writes actual C++ in a mini editor; the game compiles it (bundled MinGW / TinyCC) and checks the output against expected results

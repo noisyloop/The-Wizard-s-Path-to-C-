@@ -1,0 +1,129 @@
+{
+ "id": "looping_labyrinth",
+ "name": "The Looping Labyrinth",
+ "realm": "Repeat the incantation until the door opens.",
+ "lesson": "Loops repeat code:\n    for (int i = 0; i < 5; i++) { ... }   // runs 5 times: i = 0..4\n    while (condition) { ... }              // runs while true\n    do { ... } while (condition);          // runs at least once\n  'break' escapes the loop.  'continue' skips to the next round.",
+ "lessonCode": "for (int i = 1; i <= 3; i++) {\n    std::cout << \"Chant \" << i << \"\\n\";\n}\n// Chant 1\n// Chant 2\n// Chant 3",
+ "trial": [
+  {
+   "type": "type",
+   "prompt": "How many times does this loop run?",
+   "code": "for (int i = 0; i < 5; i++) { }",
+   "options": [],
+   "answers": [
+    "5",
+    "five"
+   ],
+   "hint": "Count: 0, 1, 2, ...",
+   "explain": "i goes 0,1,2,3,4 -> 5 times."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "for (int i = 0; i < 3; i++) cout << i;",
+   "options": [],
+   "answers": [
+    "012"
+   ],
+   "hint": "No spaces are printed.",
+   "explain": "Prints 0, then 1, then 2 -> 012."
+  },
+  {
+   "type": "choice",
+   "prompt": "Which loop ALWAYS runs at least once?",
+   "code": "",
+   "options": [
+    "a) for",
+    "b) while",
+    "c) do-while",
+    "d) none"
+   ],
+   "answers": [
+    "c"
+   ],
+   "hint": "It checks the condition at the END.",
+   "explain": "do-while checks after the body, so it runs at least once."
+  }
+ ],
+ "pool": [
+  {
+   "type": "choice",
+   "prompt": "Which statement skips the rest of THIS loop pass?",
+   "code": "",
+   "options": [
+    "a) break",
+    "b) continue",
+    "c) return",
+    "d) skip"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Not break!",
+   "explain": "continue jumps to the next iteration."
+  },
+  {
+   "type": "type",
+   "prompt": "How many times does this run?",
+   "code": "for (int i = 1; i <= 3; i++) cout << \"x\";",
+   "options": [],
+   "answers": [
+    "3",
+    "three"
+   ],
+   "hint": "i=1,2,3.",
+   "explain": "Count 1 through 3 inclusive."
+  }
+ ],
+ "bossName": "The Minotaur of Infinite Corridors",
+ "bossArt": "        (    )\n       (__)(__)\n      /  o  o  \\\n     |    __    |\n      \\  (__)  /\n    ___\\______/___\n   /    |    |    \\\n  /  /| |    | |\\  \\\n     \\|_|____|_|/",
+ "boss": [
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "for (int i = 0; i < 6; i++) {\n    if (i == 4) break;\n    if (i % 2 == 0) continue;\n    cout << i;\n}",
+   "options": [],
+   "answers": [
+    "13"
+   ],
+   "hint": "continue skips evens. break stops at 4.",
+   "explain": "0 skipped, 1 printed, 2 skipped, 3 printed, 4 -> break. Output: 13"
+  },
+  {
+   "type": "choice",
+   "prompt": "Why is this loop dangerous?",
+   "code": "int i = 0;\nwhile (i < 10) {\n    cout << i;\n}",
+   "options": [
+    "a) It prints nothing",
+    "b) It never ends",
+    "c) Compile error",
+    "d) It runs 10 times"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Does i ever change?",
+   "explain": "i is never incremented: infinite loop! The Minotaur's corridor never ends."
+  },
+  {
+   "type": "type",
+   "prompt": "What is the final value of sum?",
+   "code": "int sum = 0;\nfor (int i = 1; i <= 4; i++) sum += i;",
+   "options": [],
+   "answers": [
+    "10"
+   ],
+   "hint": "1 + 2 + 3 + 4",
+   "explain": "1+2+3+4 = 10."
+  }
+ ],
+ "prize": "Hourglass of Eternal Loops",
+ "spell": {
+  "prompt": "Use a loop to print the numbers 1 to 5, one per line.",
+  "prelude": "#include <iostream>\nusing namespace std;\nint main() {\n",
+  "epilogue": "    return 0;\n}\n",
+  "expected": "1\n2\n3\n4\n5",
+  "hint": "for (int i = 1; i <= 5; i++) cout << i << endl;",
+  "explain": "A for-loop counts for you."
+ }
+}

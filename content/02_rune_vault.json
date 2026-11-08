@@ -1,0 +1,140 @@
+{
+ "id": "rune_vault",
+ "name": "The Rune Vault",
+ "realm": "Runes store power. Variables store values.",
+ "lesson": "A VARIABLE is a named box that holds a value. You must declare its TYPE:\n    int    -> whole numbers      (42)\n    double -> decimal numbers    (3.14)\n    char   -> one character      ('A')  single quotes!\n    bool   -> true or false\n    std::string -> text          (\"Merlin\")  needs #include <string>\n  'const' makes a rune unchangeable after it's set.",
+ "lessonCode": "int mana = 100;\ndouble power = 7.5;\nchar house = 'R';\nbool isWizard = true;\nstd::string name = \"Merlin\";\nconst int MAX_LEVEL = 99;",
+ "trial": [
+  {
+   "type": "choice",
+   "prompt": "Which type should store the number of spells known (e.g. 12)?",
+   "code": "",
+   "options": [
+    "a) double",
+    "b) bool",
+    "c) int",
+    "d) char"
+   ],
+   "answers": [
+    "c"
+   ],
+   "hint": "A whole number.",
+   "explain": "int holds whole numbers."
+  },
+  {
+   "type": "choice",
+   "prompt": "Which line is a VALID char?",
+   "code": "",
+   "options": [
+    "a) char c = \"Z\";",
+    "b) char c = 'Z';",
+    "c) char c = Z;",
+    "d) char c = 'ZZ';"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Single quotes, single character.",
+   "explain": "chars use single quotes and hold exactly one character."
+  },
+  {
+   "type": "type",
+   "prompt": "Declare an int named gold with value 50. (Type the full line.)",
+   "code": "",
+   "options": [],
+   "answers": [
+    "int gold = 50;",
+    "int gold=50;",
+    "int gold{50};",
+    "int gold(50);"
+   ],
+   "hint": "type name = value;",
+   "explain": "int gold = 50;  (int gold{50}; also works - brace init!)"
+  }
+ ],
+ "pool": [
+  {
+   "type": "choice",
+   "prompt": "Which type holds 3.14159 best?",
+   "code": "",
+   "options": [
+    "a) int",
+    "b) double",
+    "c) char",
+    "d) bool"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Decimal point!",
+   "explain": "double stores floating-point numbers."
+  },
+  {
+   "type": "type",
+   "prompt": "What keyword makes a variable impossible to change?",
+   "code": "",
+   "options": [],
+   "answers": [
+    "const"
+   ],
+   "hint": "Five letters.",
+   "explain": "const makes the compiler reject any later assignment."
+  }
+ ],
+ "bossName": "The Shapeshifting Mimic",
+ "bossArt": "    ________________\n   /                \\\n  |  []        []    |\n  |    \\/\\/\\/\\/\\/    |\n  |   /\\/\\/\\/\\/\\/    |\n   \\________________/\n    |   TREASURE   |\n    |______________|",
+ "boss": [
+  {
+   "type": "choice",
+   "prompt": "The Mimic tries to change a const. What happens?",
+   "code": "const int lives = 3;\nlives = 4;",
+   "options": [
+    "a) lives becomes 4",
+    "b) Compile error",
+    "c) lives becomes 7",
+    "d) Runtime crash"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "const means constant.",
+   "explain": "Assigning to a const is a compile-time error."
+  },
+  {
+   "type": "choice",
+   "prompt": "What's stored in x?",
+   "code": "int x = 7.9;",
+   "options": [
+    "a) 7.9",
+    "b) 8",
+    "c) 7",
+    "d) Error"
+   ],
+   "answers": [
+    "c"
+   ],
+   "hint": "ints don't round, they chop.",
+   "explain": "Converting double to int truncates toward zero: 7."
+  },
+  {
+   "type": "type",
+   "prompt": "What type holds true/false? (one word)",
+   "code": "",
+   "options": [],
+   "answers": [
+    "bool"
+   ],
+   "hint": "Named after George Boole.",
+   "explain": "bool holds true or false."
+  }
+ ],
+ "prize": "Novice Robe of Runes",
+ "spell": {
+  "prompt": "Declare an int named mana set to 42, then print it.",
+  "prelude": "#include <iostream>\nusing namespace std;\nint main() {\n",
+  "epilogue": "    return 0;\n}\n",
+  "expected": "42",
+  "hint": "int mana = 42; then cout << mana;",
+  "explain": "Declare, initialize, use."
+ }
+}

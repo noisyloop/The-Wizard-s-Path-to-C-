@@ -1,0 +1,149 @@
+{
+ "id": "archmages_spire",
+ "name": "The Archmage's Spire",
+ "realm": "The final climb. Many scrolls become one great work.",
+ "lesson": "Real programs span many files. Declarations (class bodies, function prototypes) go in headers (.hpp) guarded with #pragma once; definitions go in .cpp files. The compiler builds each .cpp separately and the linker joins them - 'undefined reference' means something was declared but never defined. Prefer RAII and smart pointers so cleanup is automatic.",
+ "lessonCode": "// spellbook.hpp\n#pragma once\nclass Spellbook { public: void add(const std::string&); int count() const; };\n\n// spellbook.cpp\n#include \"spellbook.hpp\"\nvoid Spellbook::add(const std::string& s) { /*...*/ }",
+ "trial": [
+  {
+   "type": "choice",
+   "prompt": "What prevents a header from being included twice?",
+   "code": "",
+   "options": [
+    "a) #pragma once",
+    "b) #include once",
+    "c) using once",
+    "d) static"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "A pragma.",
+   "explain": "Include guards or #pragma once."
+  },
+  {
+   "type": "type",
+   "prompt": "Definitions usually live in which kind of file? (extension)",
+   "code": "",
+   "options": [],
+   "answers": [
+    ".cpp",
+    "cpp"
+   ],
+   "hint": "Not the header.",
+   "explain": "Source files: .cpp."
+  },
+  {
+   "type": "choice",
+   "prompt": "'undefined reference' usually means…",
+   "code": "",
+   "options": [
+    "a) declared but never defined",
+    "b) a keyword typo",
+    "c) a missing semicolon",
+    "d) too many arguments"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "The linker complains.",
+   "explain": "Declaration without definition."
+  },
+  {
+   "type": "type",
+   "prompt": "static class members belong to the ___ not each object. (one word)",
+   "code": "",
+   "options": [],
+   "answers": [
+    "class"
+   ],
+   "hint": "Shared by all.",
+   "explain": "One copy for the whole class."
+  },
+  {
+   "type": "choice",
+   "prompt": "What does #include \"x.hpp\" do?",
+   "code": "",
+   "options": [
+    "a) pastes the header text in",
+    "b) runs the program",
+    "c) links a library",
+    "d) imports a module"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "The preprocessor.",
+   "explain": "Textual inclusion."
+  }
+ ],
+ "pool": [],
+ "bossName": "The Segfault Dragon",
+ "bossArt": "          __====-_  _-====__\n      _--^^^#####//      \\\\#####^^^--_\n   _-^##########// (    ) \\\\##########^-_\n  -############//  |\\^^/|  \\\\############-\n  Segmentation fault (core dumped)",
+ "boss": [
+  {
+   "type": "choice",
+   "prompt": "The 'rule of zero' says…",
+   "code": "",
+   "options": [
+    "a) let members manage themselves so you write no special member functions",
+    "b) always write a destructor",
+    "c) avoid classes",
+    "d) copy everything"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Less code.",
+   "explain": "Use RAII members; defaults just work."
+  },
+  {
+   "type": "type",
+   "prompt": "Which smart pointer shares ownership?",
+   "code": "",
+   "options": [],
+   "answers": [
+    "shared_ptr",
+    "std::shared_ptr"
+   ],
+   "hint": "Counted.",
+   "explain": "shared_ptr."
+  },
+  {
+   "type": "choice",
+   "prompt": "Best way to avoid leaks in modern C++?",
+   "code": "",
+   "options": [
+    "a) RAII",
+    "b) calling delete often",
+    "c) global pointers",
+    "d) malloc"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Resource acquisition is initialization.",
+   "explain": "Let destructors release resources."
+  }
+ ],
+ "prize": "Crown of the Compiler",
+ "spell": {
+  "prompt": "CAPSTONE: build class Spellbook in two files. spellbook.hpp declares it with void add(const std::string&) and int count() const (plus a private vector<string>); spellbook.cpp defines both functions.",
+  "files": [
+   {
+    "name": "spellbook.hpp",
+    "prelude": "#pragma once\n#include <string>\n#include <vector>\n",
+    "epilogue": ""
+   },
+   {
+    "name": "spellbook.cpp",
+    "prelude": "#include \"spellbook.hpp\"\n",
+    "epilogue": ""
+   }
+  ],
+  "mainSrc": "#include <iostream>\n#include \"spellbook.hpp\"\nint main() {\n    Spellbook b;\n    b.add(\"fire\");\n    b.add(\"ice\");\n    std::cout << b.count() << std::endl;\n    return 0;\n}\n",
+  "expected": "2",
+  "hint": "class Spellbook { public: void add(const std::string& s); int count() const; private: std::vector<std::string> spells; };  then  void Spellbook::add(...) { spells.push_back(s); }",
+  "explain": "Headers declare, sources define, the linker joins."
+ }
+}

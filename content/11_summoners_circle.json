@@ -1,0 +1,139 @@
+{
+ "id": "summoners_circle",
+ "name": "The Summoner's Circle",
+ "realm": "Glowing sigils pulse. What you summon, you must also banish.",
+ "lesson": "new allocates memory on the heap and returns a pointer; every new needs a matching delete (new[] needs delete[]) or you leak. Modern C++ avoids raw new: unique_ptr has exactly one owner and frees automatically; shared_ptr counts owners and frees when the last one goes. Create them with make_unique / make_shared.",
+ "lessonCode": "auto u = make_unique<int>(5);   // sole owner\nauto s = make_shared<int>(7);   // shared\nauto s2 = s;                    // use_count() == 2\n// no delete needed - RAII cleans up",
+ "trial": [
+  {
+   "type": "choice",
+   "prompt": "Every new must be paired with…",
+   "code": "",
+   "options": [
+    "a) delete",
+    "b) free",
+    "c) remove",
+    "d) drop"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "The opposite of new.",
+   "explain": "new/delete, new[]/delete[], malloc/free."
+  },
+  {
+   "type": "type",
+   "prompt": "Which header provides unique_ptr and shared_ptr?",
+   "code": "",
+   "options": [],
+   "answers": [
+    "<memory>",
+    "memory",
+    "#include <memory>"
+   ],
+   "hint": "Where memory lives.",
+   "explain": "<memory>."
+  },
+  {
+   "type": "choice",
+   "prompt": "Why can't a unique_ptr be copied?",
+   "code": "",
+   "options": [
+    "a) it has exactly one owner",
+    "b) it is too slow",
+    "c) it is const",
+    "d) copying is only for arrays"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Unique!",
+   "explain": "Copying would create two owners."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "auto a = make_shared<int>(1);\nauto b = a;\ncout << a.use_count();",
+   "options": [],
+   "answers": [
+    "2"
+   ],
+   "hint": "Two owners.",
+   "explain": "Both a and b share ownership."
+  },
+  {
+   "type": "choice",
+   "prompt": "Which line creates a unique_ptr<int> holding 9?",
+   "code": "",
+   "options": [
+    "a) make_unique<int>(9)",
+    "b) new unique<int>(9)",
+    "c) unique_ptr(9)",
+    "d) make_ptr(9)"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "make_ + the pointer type.",
+   "explain": "make_unique<T>(args)."
+  }
+ ],
+ "pool": [],
+ "bossName": "The Dangling Wraith",
+ "bossArt": "        .-.\n       (o o)   boo...\n       | O \\\n        \\   \\\n         `~~~'  -> *p ???",
+ "boss": [
+  {
+   "type": "choice",
+   "prompt": "What is a memory leak?",
+   "code": "",
+   "options": [
+    "a) memory that was allocated but never freed",
+    "b) reading past an array end",
+    "c) too-deep recursion",
+    "d) dereferencing null"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Lost allocations.",
+   "explain": "Leaks pile up until the program exits."
+  },
+  {
+   "type": "type",
+   "prompt": "After unique_ptr<int> b = std::move(a); what does a hold? (one word)",
+   "code": "",
+   "options": [],
+   "answers": [
+    "nullptr",
+    "null"
+   ],
+   "hint": "Ownership moved.",
+   "explain": "The moved-from unique_ptr is empty."
+  },
+  {
+   "type": "choice",
+   "prompt": "What does delete[] pair with?",
+   "code": "",
+   "options": [
+    "a) new[]",
+    "b) new",
+    "c) malloc",
+    "d) make_unique"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Array form.",
+   "explain": "Mismatching forms is undefined behavior."
+  }
+ ],
+ "prize": "Amulet of Unique Ownership",
+ "spell": {
+  "prompt": "Write unique_ptr<int> make(int v) that returns a unique_ptr owning v.",
+  "prelude": "#include <iostream>\n#include <memory>\nusing namespace std;\n",
+  "epilogue": "int main() {\n    auto p = make(5);\n    cout << *p << endl;\n    return 0;\n}\n",
+  "expected": "5",
+  "hint": "return make_unique<int>(v);",
+  "explain": "No manual delete."
+ }
+}

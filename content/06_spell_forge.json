@@ -1,0 +1,132 @@
+{
+ "id": "spell_forge",
+ "name": "The Spell Forge",
+ "realm": "Forge reusable spells: functions.",
+ "lesson": "A FUNCTION is a named, reusable spell:\n    int heal(int hp, int amount) { return hp + amount; }\n  return type  name  (parameters)  { body }\n  'void' means it returns nothing.\n  Parameters are COPIES by default. Use & (reference) to modify the original:\n    void boost(int& mana) { mana += 10; }",
+ "lessonCode": "int square(int n) {\n    return n * n;\n}\n\nvoid greet(std::string name) {\n    std::cout << \"Hail, \" << name;\n}\n\nint main() {\n    int s = square(4);   // 16\n    greet(\"Morgana\");\n}",
+ "trial": [
+  {
+   "type": "choice",
+   "prompt": "What is the return type of: void chant()",
+   "code": "",
+   "options": [
+    "a) int",
+    "b) nothing",
+    "c) string",
+    "d) chant"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "void = emptiness.",
+   "explain": "void functions return nothing."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "int twice(int x) { return x * 2; }\n...\ncout << twice(twice(3));",
+   "options": [],
+   "answers": [
+    "12"
+   ],
+   "hint": "Work from the inside out.",
+   "explain": "twice(3) = 6, twice(6) = 12."
+  },
+  {
+   "type": "choice",
+   "prompt": "Which signature lets the function CHANGE the caller's variable?",
+   "code": "",
+   "options": [
+    "a) void f(int x)",
+    "b) void f(int& x)",
+    "c) void f(const int x)",
+    "d) int f()"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "& means reference.",
+   "explain": "int& x is a reference to the original variable."
+  }
+ ],
+ "pool": [
+  {
+   "type": "choice",
+   "prompt": "What does a function return if its type is void?",
+   "code": "",
+   "options": [
+    "a) 0",
+    "b) nothing",
+    "c) false",
+    "d) an empty string"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Void means empty.",
+   "explain": "void functions return no value."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "int twice(int n) { return n * 2; }\n// ...\ncout << twice(8);",
+   "options": [],
+   "answers": [
+    "16"
+   ],
+   "hint": "Double 8.",
+   "explain": "twice(8) returns 16."
+  }
+ ],
+ "bossName": "Forgemaster Ignis, the Fire Elemental",
+ "bossArt": "          )  (\n         (   ) )\n          ) ( (\n        _(_____)_\n       /  ^   ^  \\\n      |  (o) (o)  |\n      |    ___    |\n       \\  \\___/  /\n        \\_______/\n       ~~~~~~~~~~~",
+ "boss": [
+  {
+   "type": "type",
+   "prompt": "Ignis tests copies vs references. What prints?",
+   "code": "void a(int x)  { x = 99; }\nvoid b(int& x) { x = 42; }\n...\nint m = 1;\na(m);\ncout << m << \" \";\nb(m);\ncout << m;",
+   "options": [],
+   "answers": [
+    "1 42"
+   ],
+   "hint": "Only one of these touches the real m.",
+   "explain": "a() changes a copy (m stays 1); b() changes m via reference -> 42. Output: 1 42"
+  },
+  {
+   "type": "choice",
+   "prompt": "What is this called?",
+   "code": "int power(int x)           { return x; }\nint power(int x, int y)    { return x * y; }",
+   "options": [
+    "a) Recursion",
+    "b) Overloading",
+    "c) Inheritance",
+    "d) Error: duplicate name"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Same name, different parameters.",
+   "explain": "Function overloading: same name, different parameter lists."
+  },
+  {
+   "type": "type",
+   "prompt": "Recursion! What does fact(4) return?",
+   "code": "int fact(int n) {\n    if (n <= 1) return 1;\n    return n * fact(n - 1);\n}",
+   "options": [],
+   "answers": [
+    "24"
+   ],
+   "hint": "4 * 3 * 2 * 1",
+   "explain": "4! = 24. A function calling itself is recursion."
+  }
+ ],
+ "prize": "Ember-Forged Spellbook",
+ "spell": {
+  "prompt": "Write int square(int n) that returns n times n.",
+  "prelude": "#include <iostream>\nusing namespace std;\n",
+  "epilogue": "int main() {\n    cout << square(7) << endl << square(-3) << endl;\n    return 0;\n}\n",
+  "expected": "49\n9",
+  "hint": "int square(int n) { return n * n; }",
+  "explain": "A function packages a spell for reuse."
+ }
+}

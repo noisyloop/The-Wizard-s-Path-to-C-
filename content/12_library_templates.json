@@ -1,0 +1,126 @@
+{
+ "id": "library_templates",
+ "name": "The Library of Templates",
+ "realm": "Endless shelves. One scroll fits every kind of book.",
+ "lesson": "A template lets one definition work for many types: template<typename T> T maxOf(T a, T b). The STL gives ready-made containers and algorithms: map (sorted key->value), set (unique sorted values), and <algorithm> functions like sort.",
+ "lessonCode": "template<typename T>\nT maxOf(T a, T b) { return a > b ? a : b; }\n\nmap<string,int> owls;\nowls[\"Hedwig\"] = 3;\nvector<int> v{4, 1, 3};\nsort(v.begin(), v.end());   // 1 3 4",
+ "trial": [
+  {
+   "type": "type",
+   "prompt": "Which keyword begins a generic function or class definition?",
+   "code": "",
+   "options": [],
+   "answers": [
+    "template"
+   ],
+   "hint": "It's in the title.",
+   "explain": "template<typename T> ..."
+  },
+  {
+   "type": "choice",
+   "prompt": "What does std::map store?",
+   "code": "",
+   "options": [
+    "a) key-value pairs sorted by key",
+    "b) unique values only",
+    "c) values in insertion order",
+    "d) a stack"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Key and value.",
+   "explain": "map keeps keys ordered."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "set<int> s{3, 1, 3, 2, 1};\ncout << s.size();",
+   "options": [],
+   "answers": [
+    "3"
+   ],
+   "hint": "Sets drop duplicates.",
+   "explain": "Unique values: 1, 2, 3."
+  },
+  {
+   "type": "choice",
+   "prompt": "Which header provides std::sort?",
+   "code": "",
+   "options": [
+    "a) <algorithm>",
+    "b) <sort>",
+    "c) <vector>",
+    "d) <utility>"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Algorithms live together.",
+   "explain": "<algorithm>."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "map<string,int> m;\nm[\"a\"] = 1; m[\"b\"] = 2;\nm[\"a\"] += 5;\ncout << m[\"a\"];",
+   "options": [],
+   "answers": [
+    "6"
+   ],
+   "hint": "1 + 5.",
+   "explain": "operator[] returns a reference."
+  }
+ ],
+ "pool": [],
+ "bossName": "The Generic Gargoyle",
+ "bossArt": "       /\\_/\\\n      ( T T )   <T>\n       > ^ <\n      /|   |\\\n     (_|___|_)",
+ "boss": [
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "map<string,int> m;\ncout << m.count(\"x\");",
+   "options": [],
+   "answers": [
+    "0"
+   ],
+   "hint": "Nothing was inserted.",
+   "explain": "count returns 0 or 1 for map."
+  },
+  {
+   "type": "choice",
+   "prompt": "What is T deduced as in twice(2.5)?",
+   "code": "template<typename T> T twice(T x) { return x + x; }",
+   "options": [
+    "a) double",
+    "b) int",
+    "c) float",
+    "d) an error"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "2.5 is a double literal.",
+   "explain": "Deduction uses the argument type."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "vector<int> v{4, 2, 9};\nsort(v.begin(), v.end());\ncout << v[0] << v[2];",
+   "options": [],
+   "answers": [
+    "29"
+   ],
+   "hint": "Sorted order is 2 4 9.",
+   "explain": "Sorted: 2 4 9 -> v[0]=2, v[2]=9."
+  }
+ ],
+ "prize": "Tome of a Thousand Types",
+ "spell": {
+  "prompt": "Write a template function maxOf(a, b) that returns the larger of two values of the same type.",
+  "prelude": "#include <iostream>\nusing namespace std;\n",
+  "epilogue": "int main() {\n    cout << maxOf(3, 2) << endl << maxOf(2.5, 1.5) << endl;\n    return 0;\n}\n",
+  "expected": "3\n2.5",
+  "hint": "template<typename T> T maxOf(T a, T b) { return a > b ? a : b; }",
+  "explain": "One template, many types."
+ }
+}

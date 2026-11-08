@@ -1,0 +1,133 @@
+{
+ "id": "golem_workshop",
+ "name": "The Golem Workshop",
+ "realm": "Gears whirr. Things are built here, one member at a time.",
+ "lesson": "A struct bundles related variables into one new type. A class is the same, but members are private by default. A constructor has the class's name, no return type, and runs when an object is born; an initializer list (: hp(h)) sets members directly. Members are reached with a dot.",
+ "lessonCode": "struct Golem {\n    int hp;\n    Golem(int h) : hp(h) {}\n    void hit(int d) { hp -= d; }\n};\nGolem g(50);\ng.hit(8);   // g.hp is now 42",
+ "trial": [
+  {
+   "type": "choice",
+   "prompt": "Class members are ___ by default.",
+   "code": "",
+   "options": [
+    "a) private",
+    "b) public",
+    "c) protected",
+    "d) static"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Structs are the opposite.",
+   "explain": "class = private by default, struct = public."
+  },
+  {
+   "type": "type",
+   "prompt": "What is the name of the constructor of class Golem?",
+   "code": "",
+   "options": [],
+   "answers": [
+    "Golem"
+   ],
+   "hint": "Same as the class.",
+   "explain": "Constructors share the class name."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "struct Box { int w = 2; int h = 3; int area() { return w * h; } };\nBox b;\ncout << b.area();",
+   "options": [],
+   "answers": [
+    "6"
+   ],
+   "hint": "2 times 3.",
+   "explain": "Default member values apply."
+  },
+  {
+   "type": "choice",
+   "prompt": "Given Golem g; which accesses hp?",
+   "code": "",
+   "options": [
+    "a) g->hp",
+    "b) g.hp",
+    "c) g::hp",
+    "d) g:hp"
+   ],
+   "answers": [
+    "b"
+   ],
+   "hint": "Dot for objects.",
+   "explain": "Use . on objects, -> on pointers."
+  }
+ ],
+ "pool": [
+  {
+   "type": "type",
+   "prompt": "Which keyword exposes the members after it to everyone?",
+   "code": "",
+   "options": [],
+   "answers": [
+    "public",
+    "public:"
+   ],
+   "hint": "The opposite of private.",
+   "explain": "public: opens members to all code."
+  }
+ ],
+ "bossName": "Clank, the Uninitialized Golem",
+ "bossArt": "        _______\n       [ o   o ]\n       |  ___  |   ???\n      /|_|___|_|\\\n       |_|   |_|",
+ "boss": [
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "class Counter {\npublic:\n    Counter() : n(0) {}\n    void inc() { ++n; }\n    int get() const { return n; }\nprivate:\n    int n;\n};\nCounter c; c.inc(); c.inc();\ncout << c.get();",
+   "options": [],
+   "answers": [
+    "2"
+   ],
+   "hint": "Two incs from zero.",
+   "explain": "Constructor sets n=0, two inc() calls."
+  },
+  {
+   "type": "choice",
+   "prompt": "What does const after a member function's () promise?",
+   "code": "",
+   "options": [
+    "a) it won't modify the object",
+    "b) it returns a constant",
+    "c) it can't be called",
+    "d) it runs at compile time"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "A promise to the compiler.",
+   "explain": "const member functions can't change members."
+  },
+  {
+   "type": "choice",
+   "prompt": "Why write Golem(int h) : hp(h) {} ?",
+   "code": "",
+   "options": [
+    "a) members are initialized directly, not assigned later",
+    "b) it's the only way to name a constructor",
+    "c) it makes hp const",
+    "d) it makes hp public"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Initialize vs assign.",
+   "explain": "Initializer lists construct members in place."
+  }
+ ],
+ "prize": "Clockwork Gauntlets",
+ "spell": {
+  "prompt": "Write struct Point with two int members, x and y.",
+  "prelude": "#include <iostream>\nusing namespace std;\n",
+  "epilogue": "int main() {\n    Point p{3, 4};\n    cout << p.x + p.y << endl;\n    return 0;\n}\n",
+  "expected": "7",
+  "hint": "struct Point { int x; int y; };  - don't forget the final ;",
+  "explain": "A struct is a custom type."
+ }
+}

@@ -1,0 +1,127 @@
+{
+ "id": "time_weavers",
+ "name": "The Time Weavers",
+ "realm": "Threads of code spin forward, backward, and out of the way.",
+ "lesson": "A lambda is an unnamed function: [capture](params){ body }. Captures list outside variables: [k] copies, [&k] references, [&] everything by reference. Iterators generalize pointers into containers (begin() / end()). std::move turns a named object into an rvalue so its resources can be stolen instead of copied.",
+ "lessonCode": "int k = 10;\nauto addK = [k](int x) { return x + k; };\ncout << addK(5);               // 15\nstring a = \"rune\";\nstring b = std::move(a);       // a is now empty-ish",
+ "trial": [
+  {
+   "type": "choice",
+   "prompt": "Which part of a lambda lists captured variables?",
+   "code": "",
+   "options": [
+    "a) []",
+    "b) ()",
+    "c) {}",
+    "d) <>"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "The first brackets.",
+   "explain": "[capture](params){body}."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "auto add = [](int a, int b) { return a + b; };\ncout << add(2, 3);",
+   "options": [],
+   "answers": [
+    "5"
+   ],
+   "hint": "A tiny function.",
+   "explain": "Called like any function."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "int k = 10;\nauto f = [k](int x) { return x + k; };\ncout << f(5);",
+   "options": [],
+   "answers": [
+    "15"
+   ],
+   "hint": "Captured copy of k.",
+   "explain": "k=10 captured by value."
+  },
+  {
+   "type": "choice",
+   "prompt": "v.begin() returns…",
+   "code": "",
+   "options": [
+    "a) an iterator to the first element",
+    "b) the first value",
+    "c) the size",
+    "d) a pointer to the last element"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Not the value itself.",
+   "explain": "Dereference it to get the value."
+  },
+  {
+   "type": "type",
+   "prompt": "Which function casts to an rvalue to enable moving? (std:: optional)",
+   "code": "",
+   "options": [],
+   "answers": [
+    "std::move",
+    "move"
+   ],
+   "hint": "Same word as moving house.",
+   "explain": "std::move from <utility>."
+  }
+ ],
+ "pool": [],
+ "bossName": "Chronos the Lambda Weaver",
+ "bossArt": "        .---.\n       ( 12  )\n       ( | \\ )   [=](){}\n        '---'\n       /_|_|_\\",
+ "boss": [
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "int n = 1;\nauto inc = [&n]() { ++n; };\ninc(); inc();\ncout << n;",
+   "options": [],
+   "answers": [
+    "3"
+   ],
+   "hint": "Captured by reference.",
+   "explain": "Two increments from 1."
+  },
+  {
+   "type": "choice",
+   "prompt": "After string b = std::move(a); a is…",
+   "code": "",
+   "options": [
+    "a) valid but unspecified",
+    "b) deleted",
+    "c) identical to b",
+    "d) a compile error"
+   ],
+   "answers": [
+    "a"
+   ],
+   "hint": "Don't rely on its contents.",
+   "explain": "Moved-from objects stay valid."
+  },
+  {
+   "type": "type",
+   "prompt": "What does this print?",
+   "code": "vector<int> v{1, 2, 3, 4};\nint s = 0;\nfor_each(v.begin(), v.end(), [&](int x) { s += x; });\ncout << s;",
+   "options": [],
+   "answers": [
+    "10"
+   ],
+   "hint": "Sum them.",
+   "explain": "[&] captures s by reference."
+  }
+ ],
+ "prize": "Pocket Watch of Move Semantics",
+ "spell": {
+  "prompt": "Define a lambda named twice that takes an int and returns it doubled.",
+  "prelude": "#include <iostream>\nusing namespace std;\nint main() {\n",
+  "epilogue": "    cout << twice(21) << endl;\n    return 0;\n}\n",
+  "expected": "42",
+  "hint": "auto twice = [](int x) { return x * 2; };",
+  "explain": "Lambdas are values."
+ }
+}

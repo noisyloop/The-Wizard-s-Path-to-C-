@@ -1,4 +1,4 @@
-# 🧙 Spellbound++
+# 🧙 Wizards++
 ### *The Wizard's Path to C++*
 
 A gamified terminal adventure that teaches C++ from your very first `cout` to pointers. You're an apprentice climbing through magical realms. Each realm teaches one concept, tests you with trials, then throws a boss at you. Earn XP, gold, ranks and wizard prizes as the spells get harder.
